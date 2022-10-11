@@ -13,6 +13,7 @@ const contractWithSigner = contract.connect(signer);
 var ownerTokenBalance;
 async function init() {
   await provider.send("eth_requestAccounts", []);
+  displayTokens();
 }
 
 init();
@@ -42,25 +43,20 @@ function mintIdea() {
 
   // pass the string to the contract, along with the user's address.
   contractWithSigner.safeMint(signer.getAddress(),ideaObjectString);
-  displayTokens();
-
 }
 
 
 
 function displayTokens(){  //load all user's tokens and display them as a list
-  //returns the token balance of the owner's wallet
- // const ownerTokenBalance = contract.balanceOf(signer.getAddress());
- //var balancePromise = contract.balanceOf(signer.getAddress());
-//  promise = Promise.all().then((value) => {
-//     console.log(value);
-//     ownerTokenBalance = value;
-//   });
+  //first remove all previously displayed ideaObject strings
+  $( ".URIString" ).remove();
 
+  //asynchrously call getBalancePromise(). once promise is resolved, display the amount of ideaObjects the owner has
   getBalancePromise().then(data => {
     console.log(data);
     ownerTokenBalance = data;
-    $("#ideaObjectCount").text(`${ownerTokenBalance}`);
+    $("#ideaObjectCount").text(`${ownerTokenBalance}`); //displays # of tokens in a paragraph element
+    //only call indexOwnerTokens once the balance promise has been resolved
     indexOwnerTokens();
   });
 
@@ -71,8 +67,7 @@ async function getBalancePromise(){
   return balance;
 }
 
-async function indexOwnerTokens(){
-  //index of all of the owner's tokens 
+async function indexOwnerTokens(){  //index of all of the owner's tokens 
   for (let index = 0; index < ownerTokenBalance; index++) {
     //returns the token ID of the tokens in owner's wallet.
     const tokenID = await contract.tokenOfOwnerByIndex(signer.getAddress(),index);
@@ -80,7 +75,7 @@ async function indexOwnerTokens(){
     const URIString = await contract.tokenURI(tokenID)
     console.log(URIString)
     //create a paragraph element and fill it with the text within the URI string
-    var displayString = $("<p></p>").text(URIString);
+    var displayString = $("<p class='URIString'></p>").text(URIString);
     $("#listWrapper").append(displayString);
   }
 }

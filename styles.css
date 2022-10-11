@@ -1,0 +1,15 @@
+body{
+    margin: 1rem;
+}
+#listWrapper{
+    background-color: blanchedalmond;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 1rem;
+}
+.listHeader{
+
+    font-size: 0.8rem;
+}

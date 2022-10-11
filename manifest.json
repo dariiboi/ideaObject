@@ -1,0 +1,11 @@
+{
+    "name": "ideaObject Scope",
+    "version": "1.0.0",
+    "description": "tool for minting ideaObjects",
+    "manifest_version": 3,
+    "author": "darius shaoul",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "ideaObject Scope"
+    }
+}
