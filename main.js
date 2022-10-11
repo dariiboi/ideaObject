@@ -61,27 +61,26 @@ function displayTokens(){  //load all user's tokens and display them as a list
     console.log(data);
     ownerTokenBalance = data;
     $("#ideaObjectCount").text(`${ownerTokenBalance}`);
-    for (let index = 0; index < ownerTokenBalance; index++) {
-      //returns the token ID of the tokens in owner's wallet.
-      const tokenID = contract.tokenOfOwnerByIndex(signer.getAddress(),index);
-      //using the token id, find the URI string of the token
-      const URIString = contract.tokenURI(tokenID)
-      console.log(URIString)
-      //create a paragraph element and fill it with the text within the URI string
-      var displayString = $("<p></p>").text(URIString);
-      $("#listWrapper").append(displayString);
-    }
+    indexOwnerTokens();
   });
- 
-  //index of all of the owner's tokens 
-  console.log((ownerTokenBalance));
-  
-
-
 
 }
 
 async function getBalancePromise(){
   const balance = await contract.balanceOf(signer.getAddress());
   return balance;
+}
+
+async function indexOwnerTokens(){
+  //index of all of the owner's tokens 
+  for (let index = 0; index < ownerTokenBalance; index++) {
+    //returns the token ID of the tokens in owner's wallet.
+    const tokenID = await contract.tokenOfOwnerByIndex(signer.getAddress(),index);
+    //using the token id, find the URI string of the token
+    const URIString = await contract.tokenURI(tokenID)
+    console.log(URIString)
+    //create a paragraph element and fill it with the text within the URI string
+    var displayString = $("<p></p>").text(URIString);
+    $("#listWrapper").append(displayString);
+  }
 }
