@@ -19,14 +19,18 @@
 <body>
   <h1>Idea Object</h1>
 
-  <label for="ideaString">Enter Number to set:</label>
+  <label for="ideaObjectString">Paste your idea:</label>
   <!-- This input element is the text box where users
   enter a the number they want to set -->
-  <input type="text" name="ideaString" id="ideaString">
+  <input type="text" name="ideaObjectString" id="ideaObjectString">
 
   <button id="mintIdea">Mint this Idea</button>
+  <button id="tokenList">view your ideaObjects</button>
+  <div id="listWrapper">
+    <h3>your ideaObjects </h3>
+    <p> <span id="ideaObjectCount"></span> ideaObjects in this Wallet</p>
+  </div>
 
-  <p>your ideaObjects<span id="ideaObjectList"></span></p>
 
 </body>
 
