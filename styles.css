@@ -8,7 +8,7 @@ body{
     justify-content: space-around;
     flex-direction: column;
     padding: 1rem;
-    width: 20rem;
+    max-width: 30rem;
 }
 #listWrapper2{
     background-color: rgb(208, 208, 208);
@@ -17,7 +17,7 @@ body{
     justify-content: space-around;
     flex-direction: column;
     padding: 1rem;
-    width: 20rem;
+    max-width: 30rem;
 }
 h3{
     text-align: center;
@@ -29,7 +29,8 @@ h3{
 .flexbox1{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
+    /* width: 40%; */
+    justify-content: space-between;
 }
 .URIString{
     border: solid white 3px;
