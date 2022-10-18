@@ -51,13 +51,19 @@ function displayTokens(){  //load all user's tokens and display them as a list
   //first remove all previously displayed ideaObject strings
   $( ".URIString" ).remove();
 
+
   //asynchrously call getBalancePromise(). once promise is resolved, display the amount of ideaObjects the owner has
   getBalancePromise().then(data => {
-    console.log(data);
-    ownerTokenBalance = data;
-    $("#ideaObjectCount").text(`${ownerTokenBalance}`); //displays # of tokens in a paragraph element
-    //only call indexOwnerTokens once the balance promise has been resolved
-    indexOwnerTokens();
+    try{
+      console.log(data);
+      ownerTokenBalance = data;
+      $("#ideaObjectCount").text(`${ownerTokenBalance}`); //displays # of tokens in a paragraph element
+      //only call indexOwnerTokens once the balance promise has been resolved
+      indexOwnerTokens();
+    }catch(e){
+      console.log(e); // caught
+    }
+
   });
 
 }
