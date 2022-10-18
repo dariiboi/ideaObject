@@ -2,14 +2,48 @@ body{
     margin: 1rem;
 }
 #listWrapper{
-    background-color: blanchedalmond;
+    background-color: rgb(221, 226, 242);
     border-radius: 1rem;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     padding: 1rem;
+    width: 20rem;
+}
+#listWrapper2{
+    background-color: rgb(208, 208, 208);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 1rem;
+    width: 20rem;
+}
+h3{
+    text-align: center;
 }
 .listHeader{
 
     font-size: 0.8rem;
+}
+.flexbox1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+}
+.URIString{
+    border: solid white 3px;
+    border-radius: 1rem;
+    background-color: white;
+}
+.address{
+    border: solid white 3px;
+    border-radius: 1rem;
+    background-color: white;
+    font-size:x-small;
+}
+.ideaWrapper{
+    border: solid white 3px;
+    border-radius: 1rem;
+    background-color: white;
 }
